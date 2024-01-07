@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const setShape = require
+const setShape = 
 const fileName = 
 
 
@@ -34,3 +34,7 @@ const questions = [
         name: 'shapeColor',
     },
 ];
+
+function userPrompt() {
+    return inquirer.prompt(questions);
+}

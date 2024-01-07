@@ -1,31 +1,36 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { generateSVG } = require
-const { generateShape } = require 
+const setShape = require
+const fileName = 
 
-inquirer
-  .prompt([
+
+//questions that will prompted
+const questions = [
     {
-      type: "input",
-      message: "What are the three letter you want to use on the logo?",
+        type: 'input',
+        message: 'what color text would you like for your logo?'
+        name: 'logoColor',
     },
     {
-      type: "input",
-      message:
-        "What color text do you want for your logo? A hexadecimal number or keyword is acceptable.",
-      name: "logoColor",
+        type: 'list',
+        message: 'what shape would you like to use for your logo?'
+        name: 'shape',
+        choices: ['Triangle', 'Circle', 'Square'],
     },
     {
-      type: "list",
-      message: "What is the shape you want to use for your logo?",
-      name: "shape",
-      choices: ["Triangle", "Circle", "Square"],
+        type: 'input',
+        message: 'What three letters would you like to use for your logo?'
+        name: 'logoText',
+        validate: (answer) => {
+            if (answer.length > 3) {
+                return console.log("\n Text must be three characters or less, must resubmit");
+            }
+            return true;
+        }
     },
     {
-      type: "input",
-      message:
-        "What color do you want your shape to be? A hexadecimal number or keyword is acceptable.",
-      name: "shapeColor",
+        type: 'input',
+        message: 'what color would you like the shape to be?'
+        name: 'shapeColor',
     },
-  ])
-  
+];

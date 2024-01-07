@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const setShape = require("./lib/setShape.js");
+const shapeGroup = require("./lib/shapeGroup.js");
 const fileName = 
 
 
@@ -36,7 +36,7 @@ const questions = [
 ];
 // creates svg and writes it to file
 function logoCreation(response) {
-    const svg = setShape(response);
+    const svg = shapeGroup(response);
     fs.writeFile(fileName, svg, () => console.log("Generated logo.svg"));
 }
 // function to initialize app

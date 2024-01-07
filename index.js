@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const setShape = 
+const shapeGroup = 
 const fileName = 
 
 
@@ -36,9 +36,21 @@ const questions = [
 ];
 // creates svg and writes it to file
 function logoCreation(response) {
-    const svg = setShape(response);
+    const svg = shapeGroup(response);
     fs.writeFile(fileName, svg, () => console.log("Generated logo.svg"));
 }
+// function to initialize app
+function init() {
+    userPrompt()
+    .then((response) => {
+        logoCreation(response);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+init();
+
 
 function userPrompt() {
     return inquirer.prompt(questions);
